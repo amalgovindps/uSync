@@ -1,0 +1,119 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text List Example</title>
+</head>
+<body>
+    <div class="ipsum" ng-controller="SyncDatacontroller as vm">
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <table cellpadding="12" class="table table-bordered table-hover" id="ServerTable">
+                    <tr>
+                        <td>
+                            <b>Server Name</b>
+                        </td>
+                        <td>
+                            <b>
+                                Status
+                            </b>
+                        </td>
+                        <td>
+                            <b>
+                                Select
+                            </b>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="response in vm.success">
+                        <td>
+                            {{response.Server}}
+                        </td>
+                        <td>
+                            {{response.Status}}
+                        </td>
+                        <td>
+                            <input type="checkbox" name={{response.Server}} id='yes' ng-click="vm.GetSelected()" />
+                        </td>
+                    </tr>
+                </table>
+                <input type="text" id="urlAddress" align="left" style="display:block; width:100%" />
+                <button type="button" ng-click="vm.upDateValue()"
+                        button-style="success">
+                    Update Title
+                </button>
+                <button type="button" ng-click="vm.upDateImage()"
+                        button-style="success">
+                    Update Image
+                </button>
+                <div id="myModal" class="modal">
+                </div>
+                <span class="alert alert-success" style="display:none" id="message">
+                    <strong>Success!</strong> Successfully Updated.
+                </span>
+                <div class="alert alert-danger" style="display:none" id="messageError">
+                    <strong>Danger!</strong> Error update.
+                </div>
+            </div>
+        </div>
+        <umb-box>
+            <umb-box-header title="Content Nodes"></umb-box-header>
+            <umb-box-content>
+                <div class="scrollingDiv">
+                    <table cellpadding="12" class="table table-bordered table-hover" id="flow3">
+                        <tr>
+                            <td>
+                                <b>
+                                    Id
+                                </b>
+                            </td>
+                            <td>
+                                <b>
+                                    Name
+                                </b>
+                            </td>
+                        </tr>
+                        <tr ng-repeat="row in vm.nodesList|filter:paginate" style="cursor: move;" ng-click="vm.selectRow($event, row,vm.nodesList)" ng-class="{success: row.selected}">
+                            <td>
+                                {{row.IdVal}}
+                            </td>
+                            <td>
+                                {{row.NameVal}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="pagination pull-right">
+                    <ul>
+                        <li ng-class="{disabled: currentPage == 1}">
+                            <a href ng-click="prevPage()">« Prev</a>
+                        </li>
+                        <li ng-repeat="n in range(vm.nodesList.length, currentPage, currentPage + gap) "
+                            ng-class="{active: n == currentPage}"
+                            ng-click="setPage(n)">
+                            <a href ng-bind="n ">{{n}}</a>
+                        </li>
+                        <li ng-class="{disabled: numberofPage == currentPage}">
+                            <a href ng-click="nextPage()">Next »</a>
+                        </li>
+                    </ul>
+                </div>
+            </umb-box-content>
+            <input type="text" id="selectNode" align="left" style="display:block; width:100%" />
+        </umb-box>
+        <div class="sub-main2">
+            <h2>Add Servers</h2>
+            <input type="text" id="textInput" placeholder="Enter server url">
+            <button type="button" ng-click="vm.addText()" button-style="success">Add</button>
+            <ul id="textList"></ul>
+            <button type="button" ng-click="vm.checkConnection()"
+                    button-style="success">
+                Check Connection
+            </button>
+        </div>
+    </div>
+</body>
+</html>

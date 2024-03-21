@@ -1,0 +1,24 @@
+{
+  "dashboards": [
+    {
+      "alias": "syncDashboard",
+      "view": "/App_Plugins/SyncDashboard/SyncDashboard.html",
+      "sections": [ "content" ],
+      "weight": -10,
+      "access": [
+        { "deny": "translator" },
+        { "grant": "admin" }
+      ]
+    }
+
+  ],
+  "javascript": [
+    "/App_Plugins/SyncDashboard/backoffice/js/umbraco.controllers.syncData.js",
+    "/App_Plugins/SyncDashboard/backoffice/js/umbraco.controllers.syncPublisher.js",
+    "/App_Plugins/SyncDashboard/backoffice/js/table2excel.js"
+
+  ],
+  "css": [
+    "/App_Plugins/SyncDashboard/backoffice/css/ipsum.css"
+  ]
+}

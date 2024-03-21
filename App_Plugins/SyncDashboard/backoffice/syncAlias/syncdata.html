@@ -1,0 +1,111 @@
+﻿<div class="main" ng-controller="SyncDatacontroller as vm">
+    <div class="sub-main">
+        <h1 style="text-align:center">Everything</h1>
+        <h6 style="text-align:center">All Settings, Content, and other things</h6>
+        <div class="sub-main1">
+            <button class="box1" ng-click="vm.import()">Import</button>
+            <button class="box2" ng-click="vm.export()"><span>Export</span></button>
+        </div>
+    </div>
+    <div id="impModel" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img ng-src="{{interfaces.includes('Language') && '/App_Plugins/SyncDashboard/backoffice/images/Language.png' || '/App_Plugins/SyncDashboard/backoffice/images/LanguageUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('UserGroups') && '/App_Plugins/SyncDashboard/backoffice/images/Usergroups.png' || '/App_Plugins/SyncDashboard/backoffice/images/UsergroupsUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('Users') && '/App_Plugins/SyncDashboard/backoffice/images/Users.png' || '/App_Plugins/SyncDashboard/backoffice/images/UsersUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('Dictionary') && '/App_Plugins/SyncDashboard/backoffice/images/Dictionary.png' || '/App_Plugins/SyncDashboard/backoffice/images/DictionaryUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('DataType') && '/App_Plugins/SyncDashboard/backoffice/images/DataType.png' || '/App_Plugins/SyncDashboard/backoffice/images/DataTypeUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('Template') && '/App_Plugins/SyncDashboard/backoffice/images/Template.png' || '/App_Plugins/SyncDashboard/backoffice/images/TemplateUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('DocType') && '/App_Plugins/SyncDashboard/backoffice/images/DocType.png' || '/App_Plugins/SyncDashboard/backoffice/images/DocTypeUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('MediaType') && '/App_Plugins/SyncDashboard/backoffice/images/MediaType.png' || '/App_Plugins/SyncDashboard/backoffice/images/MediaTypeUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('MemberType') && '/App_Plugins/SyncDashboard/backoffice/images/MemberType.png' || '/App_Plugins/SyncDashboard/backoffice/images/MemberTypeUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('MemberGroups') && '/App_Plugins/SyncDashboard/backoffice/images/MemberGroups.png' || '/App_Plugins/SyncDashboard/backoffice/images/MemberGroupsUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('Member') && '/App_Plugins/SyncDashboard/backoffice/images/Members.png' || '/App_Plugins/SyncDashboard/backoffice/images/MembersUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('Macro') && '/App_Plugins/SyncDashboard/backoffice/images/Macros.png' || '/App_Plugins/SyncDashboard/backoffice/images/MacrosUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('Media') && '/App_Plugins/SyncDashboard/backoffice/images/Media.png' || '/App_Plugins/SyncDashboard/backoffice/images/MediaUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('Content') && '/App_Plugins/SyncDashboard/backoffice/images/Content.png' || '/App_Plugins/SyncDashboard/backoffice/images/ContentUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('Blueprint') && '/App_Plugins/SyncDashboard/backoffice/images/Blueprints.png' || '/App_Plugins/SyncDashboard/backoffice/images/BlueprintsUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('Domain') && '/App_Plugins/SyncDashboard/backoffice/images/Domain.png' || '/App_Plugins/SyncDashboard/backoffice/images/DomainUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('Relation') && '/App_Plugins/SyncDashboard/backoffice/images/Relation.png' || '/App_Plugins/SyncDashboard/backoffice/images/RelationUntick.png'}}" style="width:100px" alt="Language" />
+
+        </div>
+    </div>
+
+    <div class="sub-main">
+        <h1 >Users</h1>
+        <h6 style="text-align:center">Users and User groups</h6>
+        <div class="sub-main1">
+            <button class="box1" ng-click="vm.usersimport()">Import</button>
+            <button class="box2" ng-click="vm.usersexport()"><span>Export</span></button>
+        </div>
+    </div>
+    <div id="userModel" class="modal">
+        <div class="modal-content">
+            <span class="close" ng-click="vm.close()">&times;</span>
+            <img ng-src="{{interfaces.includes('UserGroups') && '/App_Plugins/SyncDashboard/backoffice/images/Usergroups.png' ||'/App_Plugins/SyncDashboard/backoffice/images/UsergroupsUntick.png' }}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('Users') && '/App_Plugins/SyncDashboard/backoffice/images/Users.png' || '/App_Plugins/SyncDashboard/backoffice/images/UsersUntick.png'  }}" style="width:100px" alt="Language" />
+        </div>
+    </div>
+
+    <div class="sub-main">
+        <h1 style="text-align:center">Members</h1>
+        <h6 style="text-align:center">Members and Member groups</h6>
+        <div class="sub-main1">
+            <button class="box1" ng-click="vm.membersimport()">Import</button>
+            <button class="box2" ng-click="vm.membersexport()"><span>Export</span></button>
+        </div>
+    </div>
+    <div id="memberModel" class="modal">
+        <div class="modal-content">
+            <span class="close" ng-click="vm.close()">&times;</span>
+            <img ng-src="{{interfaces.includes('MemberGroups') && '/App_Plugins/SyncDashboard/backoffice/images/MemberGroups.png' || '/App_Plugins/SyncDashboard/backoffice/images/MemberGroupsUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('Member') && '/App_Plugins/SyncDashboard/backoffice/images/Members.png' || '/App_Plugins/SyncDashboard/backoffice/images/MembersUntick.png'}}" style="width:100px" alt="Language" />
+        </div>
+    </div>
+    <div class="sub-main">
+        <h1 style="text-align:center">Settings</h1>
+        <h6 style="text-align:center">DataTypes, Doctypes and all settings</h6>
+        <div class="sub-main1">
+            <button class="box1" ng-click="vm.settingImport()">Import</button>
+            <button class="box2" ng-click="vm.settingExport()">Export</button>
+        </div>
+    </div>
+    <div id="settingsModel" class="modal">
+        <div class="modal-content">
+            <span class="close" ng-click="vm.close()">&times;</span>
+            <img ng-src="{{interfaces.includes('Macro') && '/App_Plugins/SyncDashboard/backoffice/images/Macros.png' || '/App_Plugins/SyncDashboard/backoffice/images/MacrosUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('Language') && '/App_Plugins/SyncDashboard/backoffice/images/Language.png' || '/App_Plugins/SyncDashboard/backoffice/images/LanguageUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('DataType') && '/App_Plugins/SyncDashboard/backoffice/images/DataType.png' || '/App_Plugins/SyncDashboard/backoffice/images/DataTypeUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('Template') && '/App_Plugins/SyncDashboard/backoffice/images/Template.png' || '/App_Plugins/SyncDashboard/backoffice/images/TemplateUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('DocType') && '/App_Plugins/SyncDashboard/backoffice/images/DocType.png' || '/App_Plugins/SyncDashboard/backoffice/images/DocTypeUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('MediaType') && '/App_Plugins/SyncDashboard/backoffice/images/MediaType.png' || '/App_Plugins/SyncDashboard/backoffice/images/MediaTypeUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('MemberType') && '/App_Plugins/SyncDashboard/backoffice/images/MemberType.png' || '/App_Plugins/SyncDashboard/backoffice/images/MemberTypeUntick.png'}}" style="width:100px" alt="Language" />
+        </div>
+    </div>
+    <div class="sub-main">
+        <h1 style="text-align:center">Content</h1>
+        <h6 style="text-align:center">Content, Media and related items</h6>
+        <div class="sub-main1">
+            <button class="box1" ng-click="vm.contentImport()">Import</button>
+            <button class="box2" ng-click="vm.contentExport()">Export</button>
+        </div>
+    </div>
+    <div id="contentModel" class="modal">
+        <div class="modal-content">
+            <span class="close" ng-click="vm.close()">&times;</span>
+            <img ng-src="{{interfaces.includes('Dictionary') && '/App_Plugins/SyncDashboard/backoffice/images/Dictionary.png' || '/App_Plugins/SyncDashboard/backoffice/images/DictionaryUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('Media') && '/App_Plugins/SyncDashboard/backoffice/images/Media.png' || '/App_Plugins/SyncDashboard/backoffice/images/MediaUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('Content') && '/App_Plugins/SyncDashboard/backoffice/images/Content.png' || '/App_Plugins/SyncDashboard/backoffice/images/ContentUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('Blueprint') && '/App_Plugins/SyncDashboard/backoffice/images/Blueprints.png' || '/App_Plugins/SyncDashboard/backoffice/images/BlueprintsUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('Domain') && '/App_Plugins/SyncDashboard/backoffice/images/Domain.png' || '/App_Plugins/SyncDashboard/backoffice/images/DomainUntick.png'}}" style="width:100px" alt="Language" />
+            <img ng-src="{{interfaces.includes('Relation') && '/App_Plugins/SyncDashboard/backoffice/images/Relation.png' || '/App_Plugins/SyncDashboard/backoffice/images/RelationUntick.png'}}" style="width:100px" alt="Language" />
+        </div>
+    </div>
+    <div class="sub-main">
+        <h1 style="text-align:center">Test Modals</h1>
+        <div class="sub-main1">
+            <button class="box1" ng-click="vm.testModal()">Test</button>
+            <div>{{interfaces.length != 0 && interfaces || "" }}</div>
+        </div>
+    </div>
+</div>

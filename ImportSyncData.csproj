@@ -1,0 +1,107 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="umbraco\**" />
+    <Content Remove="umbraco\**" />
+    <EmbeddedResource Remove="umbraco\**" />
+    <None Remove="umbraco\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="DashC\Lang\en-US.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <!--<Content Include="App_Plugins\Suggestions\suggestion.css" />
+    <Content Include="App_Plugins\Suggestions\suggestion.html" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\css\ipsum.css" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\Blueprints.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\BlueprintsUntick.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\Content.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\ContentUntick.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\DataType.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\DataTypeUntick.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\Dictionary.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\DictionaryUntick.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\DocType.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\DocTypeUntick.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\Domain.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\DomainUntick.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\Language.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\LanguageUntick.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\Macros.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\MacrosUntick.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\Media.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\MediaType.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\MediaTypeUntick.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\MediaUntick.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\MemberGroups.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\MemberGroupsUntick.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\Members.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\MembersUntick.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\MemberType.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\MemberTypeUntick.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\Relation.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\RelationUntick.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\Template.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\TemplateUntick.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\Usergroups.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\UsergroupsUntick.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\Users.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\images\UsersUntick.png" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\syncAlias\publish.html" />
+    <Content Include="App_Plugins\SyncDashboard\backoffice\syncAlias\syncdata.html" />
+    <Content Include="App_Plugins\SyncDashboard\Lang\en-US.xml" />
+    <Content Include="App_Plugins\SyncDashboard\SyncDashboard.html" />-->
+    <Content Include="DashC\Lang\en-US.xml" />
+  </ItemGroup>
+  <!--<ItemGroup>
+    <None Include="App_Plugins\Suggestions\package.manifest" />
+    <None Include="App_Plugins\Suggestions\suggestion.controller.js" />
+    <None Include="App_Plugins\SyncDashboard\backoffice\js\table2excel.js" />
+    <None Include="App_Plugins\SyncDashboard\backoffice\js\umbraco.controllers.syncData.js" />
+    <None Include="App_Plugins\SyncDashboard\backoffice\js\umbraco.controllers.syncPublisher.js" />
+    <None Include="App_Plugins\SyncDashboard\package.manifest" />
+  </ItemGroup>-->
+
+  <ItemGroup>
+    <PackageReference Include="JsonDiffPatch.Net" Version="2.3.0" />
+    <PackageReference Include="Umbraco.Cms" Version="12.3.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Opt-in to app-local ICU to ensure consistent globalization APIs across different platforms -->
+    <PackageReference Include="Microsoft.ICU.ICU4C.Runtime" Version="68.2.0.9" />
+    <Reference Include="SyncData">
+      <HintPath>bin\Debug\net7.0\SyncData.dll</HintPath>
+    </Reference>
+    <RuntimeHostConfigurationOption Include="System.Globalization.AppLocalIcu" Value="68.2.0.9" Condition="$(RuntimeIdentifier.StartsWith('linux')) or $(RuntimeIdentifier.StartsWith('win')) or ('$(RuntimeIdentifier)' == '' and !$([MSBuild]::IsOSPlatform('osx')))" />
+  </ItemGroup>
+	<ItemGroup>
+		<Content Include="App_Plugins\**">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="wwwroot\**">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+  <ItemGroup>
+    <Folder Include="umbraco\" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <!-- Razor files are needed for the backoffice to work correctly -->
+    <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Remove RazorCompileOnBuild and RazorCompileOnPublish when not using ModelsMode InMemoryAuto -->
+    <RazorCompileOnBuild>false</RazorCompileOnBuild>
+    <RazorCompileOnPublish>false</RazorCompileOnPublish>
+  </PropertyGroup>
+  
+</Project>

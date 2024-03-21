@@ -1,0 +1,20 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.FirstPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = null;
+    var rte = Model.But;
+}
+
+<h1>@Model.Title</h1>
+
+<h6>@Model.Description</h6>
+
+<img src="@Model.Image?.Url()" width="400" height="200" />
+
+@await Umbraco.RenderMacroAsync("myButton", new { link = "google.com", caption = "asd", newWindow = "0" })
+
+<div>@rte</div>
+<div>
+  
+    </div>
